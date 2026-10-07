@@ -20,7 +20,7 @@ namespace GymManagementDAL.Data
                 .HasMaxLength(200);
 
             builder.Property(x => x.Price)
-                .HasPrecision(10, 2)    ;
+                .HasPrecision(10, 2);
 
             builder.Property(x => x.DurationDays)
                 .HasColumnType("int");

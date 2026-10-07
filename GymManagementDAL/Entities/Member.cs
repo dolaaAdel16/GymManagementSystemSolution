@@ -9,5 +9,9 @@ namespace GymManagementDAL.Entities
       public string Photo { get; set; } = null!;    
 
       public HealthRecord HealthRecord { get; set; } = null!;   
+
+      public ICollection<Membership> Memberships { get; set; } = null!; 
+      public ICollection<Booking> Bookings { get; set; } = null!;       
+
     }
 }

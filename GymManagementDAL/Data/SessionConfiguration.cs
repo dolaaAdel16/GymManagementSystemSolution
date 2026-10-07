@@ -13,9 +13,17 @@ namespace GymManagementDAL.Data
         {
             builder.ToTable(tb =>
             {
-                tb.HasCheckConstraint("SessionCapacity", "SessionCapacity Between 1 and 25");
-                tb.HasCheckConstraint("Session EndDate", "StartDate < EndDate");
+                tb.HasCheckConstraint("SessionCapacity", "Capacity Between 1 and 25");
+                tb.HasCheckConstraint("SessionEndDate", "StartTime < EndTime");
             });
+
+            builder.HasOne(x => x.Category)
+                .WithMany(x => x.CategorySessions)
+                .HasForeignKey(x => x.CategoryId);
+
+            builder.HasOne(x => x.Trainer)
+                .WithMany(x => x.TrainerSessions)
+                .HasForeignKey(x => x.TrainerId);
         }
     }
 }

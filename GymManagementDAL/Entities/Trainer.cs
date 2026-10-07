@@ -8,5 +8,7 @@ namespace GymManagementDAL.Entities
     internal class Trainer : GymUser
     {
         public Specialities Specialities { get; set; }  
+
+        public ICollection<Session> TrainerSessions { get; set; } = null!; 
     }
 }
