@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal class Membership : BaseEntity
+    public class Membership : BaseEntity
     {
         public DateTime EndDate { get; set; }
 

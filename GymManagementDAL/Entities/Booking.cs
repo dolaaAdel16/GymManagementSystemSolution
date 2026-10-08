@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal class Booking : BaseEntity
+    public class Booking : BaseEntity
     {
         // Booking Date - Use CreatedAt from BaseEntity
         public int MemberId { get; set; }

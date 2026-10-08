@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal class Trainer : GymUser
+    public class Trainer : GymUser
     {
         public Specialities Specialities { get; set; }  
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal abstract class GymUser : BaseEntity
+    public abstract class GymUser : BaseEntity
     {
         public string Name { get; set; } = null!;
         public string Email { get; set; } = null!;
@@ -17,7 +17,7 @@ namespace GymManagementDAL.Entities
     }
 
     [Owned]
-    class Address
+    public class Address
     {
         public string BuildingNumber { get; set; } = null!;
         public string Street { get; set; } = null!;

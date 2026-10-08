@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GymManagementDAL.Data.Context
 {
-    internal class GymDbContext : DbContext
+    public class GymDbContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

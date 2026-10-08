@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal class Member : GymUser
+    public class Member : GymUser
     {
       public string Photo { get; set; } = null!;    
 

@@ -1,3 +1,5 @@
+using GymManagementDAL.Data.Context;
+
 namespace GymManagementPL
 {
     public class Program
@@ -8,6 +10,7 @@ namespace GymManagementPL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<GymDbContext>();
 
             var app = builder.Build();
 

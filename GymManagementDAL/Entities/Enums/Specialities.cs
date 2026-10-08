@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities.Enums
 {
-    internal enum Specialities
+    public enum Specialities
     {
         GeneralFitness = 1,
         Yoga,

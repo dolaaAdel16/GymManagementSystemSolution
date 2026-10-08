@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymManagementDAL.Entities
 {
-    internal class Session : BaseEntity
+    public class Session : BaseEntity
     {
         public string Description { get; set; } = null!;    
         public int Capacity { get; set; }   
