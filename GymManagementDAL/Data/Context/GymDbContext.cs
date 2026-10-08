@@ -11,7 +11,6 @@ namespace GymManagementDAL.Data.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = . ; DataBase = GymManagementDB ; Trusted_Connection = true; TrustServerCertificate = true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
