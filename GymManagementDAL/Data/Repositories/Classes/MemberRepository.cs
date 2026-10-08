@@ -12,6 +12,7 @@ namespace GymManagementDAL.Data.Repositories.Classes
         private readonly GymDbContext _dbcontext;
 
         // Ask CLR to inject an object from DBContext class into this constructor
+        // DbContext object is Injected , not created manually
         public MemberRepository(GymDbContext dbcontext)
         {
             _dbcontext = dbcontext;
