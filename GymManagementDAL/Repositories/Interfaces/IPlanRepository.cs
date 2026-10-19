@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GymManagementDAL.Repositories.Interfaces
 {
-    internal interface IPlanRepository
+    public interface IPlanRepository
     {
          Plan? GetById(int Id);
          IEnumerable<Plan> GetAll();

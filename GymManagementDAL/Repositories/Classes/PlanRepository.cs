@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GymManagementDAL.Repositories.Classes
 {
-    internal class PlanRepository : IPlanRepository
+    public class PlanRepository : IPlanRepository
     {
         private readonly GymDbContext _context;
         public PlanRepository(GymDbContext context)
