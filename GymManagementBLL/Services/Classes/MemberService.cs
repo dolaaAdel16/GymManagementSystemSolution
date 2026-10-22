@@ -184,7 +184,6 @@ namespace GymManagementBLL.Services.Classes
             }
         }
 
-        #region Helper Methods
         private bool IsPhoneExists(string phone)
         {
             return _memberRepository.GetAll(x => x.Phone == phone).Any();
