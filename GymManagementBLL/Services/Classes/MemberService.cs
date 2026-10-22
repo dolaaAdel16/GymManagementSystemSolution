@@ -15,15 +15,18 @@ namespace GymManagementBLL.Services.Classes
         private readonly IGenericRepository<Membership> _membershipRepository;
         private readonly IPlanRepository _planRepository;
         private readonly IGenericRepository<HealthRecord> _healthRecordRepository;
+        private readonly IGenericRepository<Session> _sessionRepository;
 
         public MemberService(IGenericRepository<Member> memberRepository,
             IGenericRepository<Membership> membershipRepository,
-            IPlanRepository planRepository, IGenericRepository<HealthRecord> healthRecordRepository)
+            IPlanRepository planRepository, IGenericRepository<HealthRecord> healthRecordRepository,
+            IGenericRepository<Session> sessionRepository)
         {
             _memberRepository = memberRepository;
             _membershipRepository = membershipRepository;
             _planRepository = planRepository;
             _healthRecordRepository = healthRecordRepository;
+            _sessionRepository = sessionRepository;
         }
 
         public bool CreateMember(CreateMemberViewModel createdMember)
@@ -184,6 +187,33 @@ namespace GymManagementBLL.Services.Classes
             }
         }
 
+        public bool RemoveMember(int MemberId)
+        {
+            var Member = _memberRepository.GetById(MemberId);
+            if (Member is null) return false;
+            var HasActiveMemberSessions = _sessionRepository.GetAll(x => x.Id == MemberId && x.StartTime > DateTime.Now).Any();
+            if (HasActiveMemberSessions) return false;
+
+            var Memberships = _membershipRepository.GetAll(x => x.MemberId == MemberId);
+            try
+            {
+                if(Memberships.Any())
+                {
+                    foreach(var membership in Memberships)
+                    {
+                        _membershipRepository.Delete(membership);
+                    }
+                }
+                return _memberRepository.Delete(Member) > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Helper Methods
+
         private bool IsPhoneExists(string phone)
         {
             return _memberRepository.GetAll(x => x.Phone == phone).Any();
@@ -192,6 +222,6 @@ namespace GymManagementBLL.Services.Classes
         {
             return _memberRepository.GetAll(x => x.Email == email).Any();
         }
-        #endregion
+    
     }
 }
