@@ -39,10 +39,5 @@ namespace GymManagementDAL.Repositories.Classes
         public TEntity? GetById(int Id) => _context.Set<TEntity>().Find(Id);
        
 
-        public int Update(TEntity entity)
-        {
-            _context.Set<TEntity>().Update(entity);
-            return _context.SaveChanges();
-        }   
     }
 }
