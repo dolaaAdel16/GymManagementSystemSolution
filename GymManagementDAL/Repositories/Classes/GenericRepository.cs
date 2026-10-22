@@ -17,18 +17,10 @@ namespace GymManagementDAL.Repositories.Classes
             _context = context;
         }
 
-        public int Add(TEntity entity)
-        {
-            _context.Set<TEntity>().Add(entity);
-             return _context.SaveChanges();
-        }
-
-        public int Delete(TEntity entity)
-        {
-            _context.Set<TEntity>().Remove(entity);
-            return _context.SaveChanges();
-        }
-
+        public void Add(TEntity entity) => _context.Set<TEntity>().Add(entity);
+       
+        public void Delete(TEntity entity) => _context.Set<TEntity>().Remove(entity);
+        
         public IEnumerable<TEntity> GetAll(Func<TEntity, bool>? condition = null)
         {
             if (condition is null)
@@ -37,7 +29,11 @@ namespace GymManagementDAL.Repositories.Classes
                 return _context.Set<TEntity>().AsNoTracking().Where(condition).ToList();
         }
         public TEntity? GetById(int Id) => _context.Set<TEntity>().Find(Id);
-       
+
+        public void Update(TEntity entity) => _context.Set<TEntity>().Update(entity);
+
+
+
 
     }
 }
