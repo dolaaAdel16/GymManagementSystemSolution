@@ -62,9 +62,24 @@ namespace GymManagementBLL.Services.Classes
 
         }
 
-        public bool ToggleStatus(int Id)
+        public bool ToggleStatus(int PlanId)
         {
-            throw new NotImplementedException();
+            var Repo = _unitOfWork.GetRpository<Plan>();
+            var Plan = Repo.GetById(PlanId);
+            if (Plan is null || HasActiveMembership(PlanId)) return false;
+
+            Plan.IsActive = Plan.IsActive == true ? false : true;
+            Plan.UpdatedAt = DateTime.Now;
+
+            try 
+            {
+                Repo.Update(Plan);
+                return _unitOfWork.SaveChanges() > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool UpdatePlan(int PlanId, UpdatePlanViewModel updatedPlan)
